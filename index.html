@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <marquee style="color: rgb(250, 250, 252);">💫 Follow Social Media🔥</marquee>
+    <marquee style="color: rgb(250, 250, 252);">💫 Follow On Social Media🔥</marquee>
     <hr style="color: white;">
     <title>Bug Bounty Search Engine</title>
     <!-- Bootstrap 5 CSS -->
@@ -14,7 +14,21 @@
             background-image: url(https://assets.faisalahmed.me/bg1.png);
             margin: 0;
             padding: 0;
-            background-color: #c8bfbf;
+            background-color: #000000; /* Added black background color */
+            animation: backgroundAnimation 10s infinite, gradientAnimation 5s infinite;
+            overflow: hidden;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradientAnimation {
+            0% { background: linear-gradient(45deg, #c8bfbf, #333); }
+            50% { background: linear-gradient(45deg, #333, #c8bfbf); }
+            100% { background: linear-gradient(45deg, #c8bfbf, #333); }
         }
 
         .background-video {
@@ -52,6 +66,8 @@
             border: 1px solid #ffffff;
             color: #ffffff;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .futuristic-button:hover {
@@ -59,6 +75,24 @@
             color: #0088ff;
             border-color: #4c94be;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
+        }
+
+        .futuristic-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .futuristic-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .search-container {
@@ -103,331 +137,379 @@
             display: block;
             margin: 0 auto;
         }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+            margin-top: 15px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid;
+            animation: typing 3s steps(30), blink 0.5s step-end infinite alternate;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: moveParticle 5s infinite;
+        }
+
+        @keyframes moveParticle {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(500px, 500px); }
+        }
     </style>
     <script>
-         function googleSearch(type) {
-        var targetDomain = document.getElementById('target').value;
+        function googleSearch(type) {
+            var targetDomain = document.getElementById('target').value;
 
-        if (!targetDomain) {
-            alert('Please enter your target domain.');
-            return;
+            if (!targetDomain) {
+                alert('Please enter your target domain.');
+                return;
+            }
+
+            var searchQuery = 'site:' + targetDomain;
+
+            switch (type) {
+                case 1:
+                    searchQuery += ' intitle:index.of';
+                    break;
+                case 2:
+                    searchQuery += ' ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ora | ext:ini | ext:env';
+                    break;
+                case 3:
+                    searchQuery += ' ext:sql | ext:dbf | ext:mdb';
+                    break;
+                case 4:
+                    searchQuery += ' ext:log';
+                    break;
+                case 5:
+                    searchQuery += ' ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup';
+                    break;
+                case 6:
+                    searchQuery += ' inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:signup | inurl:register | intitle:Signup | inurl:secure';
+                    break;
+                case 7:
+                    searchQuery += ' intext:"sql syntax near" | intext:"syntax error has occurred" | intext:"incorrect syntax near" | intext:"unexpected end of SQL command" | intext:"Warning: mysql_connect()" | intext:"Warning: mysql_query()" | intext:"Warning: pg_connect()"';
+                    break;
+                case 65 :
+                    searchQuery += ' intitle:index.of | ext:log | ext:php intitle:phpinfo "published by the PHP Group" | inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor | inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config | inurl:"/phpinfo.php" | inurl:".htaccess" | ext:swf';
+                    break;
+                case 66 :
+                    searchQuery += ' "PHP Parse error" | "PHP Warning" | "PHP Error"';
+                    break;
+                case 8 :
+                    searchQuery += ' ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv ext:txt | ext:xml | ext:xls | ext:xlsx intext:“confidential” | intext:“Not for Public Release” | intext:”internal use only” | intext:“do not distribute”';
+                    break;
+                case 9:
+                    searchQuery += ' ext:php inurl:? intitle:phpinfo "published by the PHP Group"';
+                    break;
+                case 10:
+                    searchQuery += ' inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download | inurl:wp-includes';
+                    break;
+                case 11:
+                    searchQuery += ' inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor';
+                    break;
+                case 12:
+                    searchQuery += ' inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config';
+                    break;
+                case 13:
+                    searchQuery += ' inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http';
+                    break;
+                case 14:
+                    searchQuery += ' ext:action | ext:struts | ext:do';
+                    break;
+                case 15:
+                    var site = 'site:pastebin.com ' + targetDomain;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 16:
+                    var site = 'site:linkedin.com employees ' + targetDomain;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 17:
+                    var site = 'inurl:"/phpinfo.php" | inurl:".htaccess" | inurl:"/.git" ' + targetDomain + ' -github';
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 18:
+                    var site = 'site:*.' + targetDomain;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 19:
+                    var site = 'site:*.*.' + targetDomain;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 20:
+                    var site = 'inurl:wp-content | inurl:wp-includes ' + targetDomain;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 21:
+                    var site = '"*.' + targetDomain + '"';
+                    var url = 'https://github.com/search?q=' + encodeURIComponent(site) + '&type=host';
+                    window.open(url, '_blank');
+                    return;
+                case 22:
+                    var url = 'http://' + targetDomain + '/crossdomain.xml';
+                    window.open(url, '_blank');
+                    return;
+                case 23:
+                    var url = 'http://threatcrowd.org/domain.php?domain=' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 24:
+                    var site = '+inurl:' + targetDomain + ' +ext:swf';
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 25:
+                    var site = 'site:' + targetDomain + ' mime:swf';
+                    var url = 'https://yandex.com/search/?text=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    return;
+                case 26:
+                    var site = targetDomain;
+                    var url = 'https://web.archive.org/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=urlkey:.*swf&limit=100000&_=1507209148310';
+                    window.open(url, '_blank');
+                    return;
+                case 27:
+                    var site = targetDomain;
+                    var url = 'https://web.archive.org/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=mimetype:application/x-shockwave-flash&limit=100000&_=1507209148310';
+                    window.open(url, '_blank');
+                    return;
+                case 28:
+                    var site = '.' + targetDomain;
+                    var url = 'https://web.archive.org/web/*/(.' + encodeURIComponent(site) + ')';
+                    window.open(url, '_blank');
+                    return;
+                case 29:
+                    var site = targetDomain;
+                    var url = 'https://web.archive.org/web/*/' + encodeURIComponent(site) + '/*';
+                    window.open(url, '_blank');
+                    return;
+                case 30:
+                    var url = 'https://crt.sh/?q=%25.' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 31:
+                    var site = targetDomain;
+                    var url = 'https://www.openbugbounty.org/search/?search=' + encodeURIComponent(site) + '&type=host';
+                    window.open(url, '_blank');
+                    return;
+                case 32:
+                    var site = targetDomain;
+                    var url = 'https://www.reddit.com/search/?q=' + encodeURIComponent(site) + '&source=recent';
+                    window.open(url, '_blank');
+                    return;
+                case 33:
+                    var site = '+inurl:' + targetDomain + ' +ext:wp- | +inurl:' + targetDomain + ' +ext:wp-content';
+                    var url = 'http://wwwb-dedup.us.archive.org:8083/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=';
+                    window.open(url, '_blank');
+                    return;
+                case 34:
+                    var url = 'https://censys.io/ipv4?q=' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 35:
+                    var url = 'https://censys.io/domain?q=' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 36:
+                    var url = 'https://censys.io/certificates?q=' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 37:
+                    var url = 'https://www.shodan.io/search?query=' + targetDomain;
+                    window.open(url, '_blank');
+                    return;
+                case 38:
+                    searchQuery += ' inurl:"/geoserver/ows?service=wfs"';
+                    break;
+                case 39:
+                    searchQuery += ' intext:"ArcGIS REST Services Directory" intitle:"Folder: /"';
+                    break;
+                case 40:
+                    searchQuery += ' inurl:/wp-content/uploads/wpo_wcpdf';
+                    break;
+                case 41:
+                    searchQuery += ' intitle:"index of "main.yml"';
+                    break;
+                case 42:
+                    searchQuery += ' inurl:/admin.aspx'
+                    break
+                case 43:
+                    searchQuery += ' inurl:/wp-content/uploads/wpo_wcpdf'
+                    break
+                case 44:
+                    searchQuery += ' inurl:uploadimage.php'
+                    break
+                case 45:
+                    searchQuery += ' inurl:*/wp-content/plugins/contact-form-7/'
+                    break
+                case 46:
+                    searchQuery += ' intitle:index.of conf.php'
+                    break
+                case 47:
+                    searchQuery += ' intitle:"Sharing API Info"'
+                    break
+                case 48:
+                    searchQuery += ' intitle:"Index of" inurl:/backup/ "admin.zip"'
+                    break
+                case 49:
+                    searchQuery += ' intitle:"index of" github-api'
+                    break
+                case 50:
+                    searchQuery += ' inurl:wp-content/uploads/wcpa_uploads'
+                    break
+                case 51:
+                    searchQuery += ' inurl:user intitle:"Drupal" intext:"Log in" -"powered by"'
+                    break
+                case 52:
+                    searchQuery += ' inurl: /libraries/joomla/database/'
+                    break
+                case 53:
+                    searchQuery += ' inurl:"php?sql=select" ext:php'
+                    break
+                case 54:
+                    searchQuery += ' inurl:"wp-content" intitle:"index.of" intext:wp-config.php'
+                    break
+                case 55 :
+                    searchQuery += ' intext:"index of" inurl:json-rpc'
+                    break
+                case 56 :
+                    searchQuery += ' intitle:"index of" "download.php?file="'
+                    break
+                case 57 :
+                    searchQuery += ' intext:"index of" inurl:jwks-rsa'
+                    break
+                case 58 :
+                    searchQuery += ' inurl:"wp-content" intitle:"index.of" intext:backup"'
+                    break
+                case 59 :
+                    searchQuery += ' intitle:index.of conf.mysql'
+                    break
+                case 60 :
+                    searchQuery += ' intitle:"index of" "users.yml" | "admin.yml" | "config.yml"'
+                    break
+                case 61 :
+                    searchQuery += ' intitle:"index of" "docker-compose.yml"'
+                    break
+                case 62 :
+                    searchQuery += ' intext:pom.xml intitle:"index of /"'
+                    break
+                case 63 :
+                    searchQuery += ' intext:"Index of" intext:"/etc"'
+                    break
+                case 64 :
+                    searchQuery += ' "sql" "parent" intitle:index.of -injection'
+                    break
+                case 71 :
+                    searchQuery += ' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json'
+                    break
+                case 72 :
+                    var site = 'inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 73 :
+                    var site = 'inurl:"error" | intitle:"exception" | intitle:"failure" | intitle:"server at" | inurl:exception | "database error" | "SQL syntax" | "undefined index" | "unhandled exception" | "stack trace" ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 74 :
+                    var site = 'inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 75 :
+                    var site = 'inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 76 :
+                    var site = 'inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 77 :
+                    var site = 'inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain=  | inurl:page= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 78 :
+                    var site = 'inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 79 :
+                    var site = 'inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read=  | inurl:ping= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 80 :
+                    searchQuery += ' ”choose file”'
+                    break
+                case 81 :
+                    var site = 'inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 82 :
+                    var site = 'inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 83 :
+                    var site = 'inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& ' + searchQuery;
+                    var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
+                    window.open(url, '_blank');
+                    break
+                case 84 :
+                    searchQuery += ' -www -shop -share -ir -mfa'
+                    break
+                case 85 :
+                    searchQuery += ' inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3'
+                    break
+                default:
+                    alert('Invalid option.');
+                    return;
+            }
+
+            var url = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+            window.open(url, '_blank');
         }
 
-        var searchQuery = 'site:' + targetDomain;
+        function createParticles() {
+            const numParticles = 50;
+            const container = document.body;
 
-        switch (type) {
-            case 1:
-                searchQuery += ' intitle:index.of';
-                break;
-            case 2:
-                searchQuery += ' ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ora | ext:ini | ext:env';
-                break;
-            case 3:
-                searchQuery += ' ext:sql | ext:dbf | ext:mdb';
-                break;
-            case 4:
-                searchQuery += ' ext:log';
-                break;
-            case 5:
-                searchQuery += ' ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup';
-                break;
-            case 6:
-                searchQuery += ' inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:signup | inurl:register | intitle:Signup | inurl:secure';
-                break;
-            case 7:
-                searchQuery += ' intext:"sql syntax near" | intext:"syntax error has occurred" | intext:"incorrect syntax near" | intext:"unexpected end of SQL command" | intext:"Warning: mysql_connect()" | intext:"Warning: mysql_query()" | intext:"Warning: pg_connect()"';
-                break;
-            case 65 :
-                searchQuery += ' intitle:index.of | ext:log | ext:php intitle:phpinfo "published by the PHP Group" | inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor | inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config | inurl:"/phpinfo.php" | inurl:".htaccess" | ext:swf';
-                break;
-            case 66 :
-                searchQuery += ' "PHP Parse error" | "PHP Warning" | "PHP Error"';
-                break;
-            case 8 :
-                searchQuery += ' ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv ext:txt | ext:xml | ext:xls | ext:xlsx intext:“confidential” | intext:“Not for Public Release” | intext:”internal use only” | intext:“do not distribute”';
-                break;
-            case 9:
-                searchQuery += ' ext:php inurl:? intitle:phpinfo "published by the PHP Group"';
-                break;
-            case 10:
-                searchQuery += ' inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download | inurl:wp-includes';
-                break;
-            case 11:
-                searchQuery += ' inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor';
-                break;
-            case 12:
-                searchQuery += ' inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config';
-                break;
-            case 13:
-                searchQuery += ' inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http';
-                break;
-            case 14:
-                searchQuery += ' ext:action | ext:struts | ext:do';
-                break;
-            case 15:
-                var site = 'site:pastebin.com ' + targetDomain;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 16:
-                var site = 'site:linkedin.com employees ' + targetDomain;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 17:
-                var site = 'inurl:"/phpinfo.php" | inurl:".htaccess" | inurl:"/.git" ' + targetDomain + ' -github';
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 18:
-                var site = 'site:*.' + targetDomain;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 19:
-                var site = 'site:*.*.' + targetDomain;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 20:
-                var site = 'inurl:wp-content | inurl:wp-includes ' + targetDomain;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 21:
-                var site = '"*.' + targetDomain + '"';
-                var url = 'https://github.com/search?q=' + encodeURIComponent(site) + '&type=host';
-                window.open(url, '_blank');
-                return;
-            case 22:
-                var url = 'http://' + targetDomain + '/crossdomain.xml';
-                window.open(url, '_blank');
-                return;
-            case 23:
-                var url = 'http://threatcrowd.org/domain.php?domain=' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 24:
-                var site = '+inurl:' + targetDomain + ' +ext:swf';
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 25:
-                var site = 'site:' + targetDomain + ' mime:swf';
-                var url = 'https://yandex.com/search/?text=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                return;
-            case 26:
-                var site = targetDomain;
-                var url = 'https://web.archive.org/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=urlkey:.*swf&limit=100000&_=1507209148310';
-                window.open(url, '_blank');
-                return;
-            case 27:
-                var site = targetDomain;
-                var url = 'https://web.archive.org/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=urlkey&output=text&fl=original&filter=mimetype:application/x-shockwave-flash&limit=100000&_=1507209148310';
-                window.open(url, '_blank');
-                return;
-            case 28:
-                var site = '.' + targetDomain;
-                var url = 'https://web.archive.org/web/*/(.' + encodeURIComponent(site) + ')';
-                window.open(url, '_blank');
-                return;
-            case 29:
-                var site = targetDomain;
-                var url = 'https://web.archive.org/web/*/' + encodeURIComponent(site) + '/*';
-                window.open(url, '_blank');
-                return;
-            case 30:
-                var url = 'https://crt.sh/?q=%25.' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 31:
-                var site = targetDomain;
-                var url = 'https://www.openbugbounty.org/search/?search=' + encodeURIComponent(site) + '&type=host';
-                window.open(url, '_blank');
-                return;
-            case 32:
-                var site = targetDomain;
-                var url = 'https://www.reddit.com/search/?q=' + encodeURIComponent(site) + '&source=recent';
-                window.open(url, '_blank');
-                return;
-            case 33:
-                var site = '+inurl:' + targetDomain + ' +ext:wp- | +inurl:' + targetDomain + ' +ext:wp-content';
-                var url = 'http://wwwb-dedup.us.archive.org:8083/cdx/search?url=' + encodeURIComponent(site) + '/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=';
-                window.open(url, '_blank');
-                return;
-            case 34:
-                var url = 'https://censys.io/ipv4?q=' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 35:
-                var url = 'https://censys.io/domain?q=' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 36:
-                var url = 'https://censys.io/certificates?q=' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 37:
-                var url = 'https://www.shodan.io/search?query=' + targetDomain;
-                window.open(url, '_blank');
-                return;
-            case 38:
-                searchQuery += ' inurl:"/geoserver/ows?service=wfs"';
-                break;
-            case 39:
-                searchQuery += ' intext:"ArcGIS REST Services Directory" intitle:"Folder: /"';
-                break;
-            case 40:
-                searchQuery += ' inurl:/wp-content/uploads/wpo_wcpdf';
-                break;
-            case 41:
-                searchQuery += ' intitle:"index of "main.yml"';
-                break;
-            case 42:
-                searchQuery += ' inurl:/admin.aspx'
-                break
-            case 43:
-                searchQuery += ' inurl:/wp-content/uploads/wpo_wcpdf'
-                break
-            case 44:
-                searchQuery += ' inurl:uploadimage.php'
-                break
-            case 45:
-                searchQuery += ' inurl:*/wp-content/plugins/contact-form-7/'
-                break
-            case 46:
-                searchQuery += ' intitle:index.of conf.php'
-                break
-            case 47:
-                searchQuery += ' intitle:"Sharing API Info"'
-                break
-            case 48:
-                searchQuery += ' intitle:"Index of" inurl:/backup/ "admin.zip"'
-                break
-            case 49:
-                searchQuery += ' intitle:"index of" github-api'
-                break
-            case 50:
-                searchQuery += ' inurl:wp-content/uploads/wcpa_uploads'
-                break
-            case 51:
-                searchQuery += ' inurl:user intitle:"Drupal" intext:"Log in" -"powered by"'
-                break
-            case 52:
-                searchQuery += ' inurl: /libraries/joomla/database/'
-                break
-            case 53:
-                searchQuery += ' inurl:"php?sql=select" ext:php'
-                break
-            case 54:
-                searchQuery += ' inurl:"wp-content" intitle:"index.of" intext:wp-config.php'
-                break
-            case 55 :
-                searchQuery += ' intext:"index of" inurl:json-rpc'
-                break
-            case 56 :
-                searchQuery += ' intitle:"index of" "download.php?file="'
-                break
-            case 57 :
-                searchQuery += ' intext:"index of" inurl:jwks-rsa'
-                break
-            case 58 :
-                searchQuery += ' inurl:"wp-content" intitle:"index.of" intext:backup"'
-                break
-            case 59 :
-                searchQuery += ' intitle:index.of conf.mysql'
-                break
-            case 60 :
-                searchQuery += ' intitle:"index of" "users.yml" | "admin.yml" | "config.yml"'
-                break
-            case 61 :
-                searchQuery += ' intitle:"index of" "docker-compose.yml"'
-                break
-            case 62 :
-                searchQuery += ' intext:pom.xml intitle:"index of /"'
-                break
-            case 63 :
-                searchQuery += ' intext:"Index of" intext:"/etc"'
-                break
-            case 64 :
-                searchQuery += ' "sql" "parent" intitle:index.of -injection'
-                break
-            case 71 :
-                searchQuery += ' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json'
-                break
-            case 72 :
-                var site = 'inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 73 :
-                var site = 'inurl:"error" | intitle:"exception" | intitle:"failure" | intitle:"server at" | inurl:exception | "database error" | "SQL syntax" | "undefined index" | "unhandled exception" | "stack trace" ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 74 :
-                var site = 'inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 75 :
-                var site = 'inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 76 :
-                var site = 'inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 77 :
-                var site = 'inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain=  | inurl:page= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 78 :
-                var site = 'inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 79 :
-                var site = 'inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read=  | inurl:ping= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 80 :
-                searchQuery += ' ”choose file”'
-                break
-            case 81 :
-                var site = 'inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 82 :
-                var site = 'inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 83 :
-                var site = 'inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& ' + searchQuery;
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
-                window.open(url, '_blank');
-                break
-            case 84 :
-                searchQuery += ' -www -shop -share -ir -mfa'
-                break
-            case 85 :
-                searchQuery += ' inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3'
-                break
-            default:
-                alert('Invalid option.');
-                return;
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                container.appendChild(particle);
+            }
         }
 
-        var url = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
-        window.open(url, '_blank');
-    }
+        window.onload = createParticles;
     </script>
     </head>
 <body style="text-align: center; color: #ffffff; margin-top: 15px;">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <marquee style="color: rgb(250, 250, 252);">New tools Upcoming - 💫 Follow Social Media and Youtube Channel🔥</marquee>
+    <marquee style="color: rgb(250, 250, 252);">💫 Follow Social Media🔥</marquee>
     <hr style="color: white;">
     <title>Bug Bounty Search Engine</title>
     <!-- Bootstrap 5 CSS -->
@@ -16,7 +16,7 @@
             padding: 0;
             background-color: #c8bfbf;
         }
-        
+
         .background-video {
             position: fixed;
             top: 0;
@@ -25,7 +25,7 @@
             height: 100%;
             z-index: -1;
         }
-        
+
         .button-container {
             position: absolute;
             top: 50%;
@@ -37,14 +37,14 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .button-column {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             margin-right: 10px;
         }
-        
+
         .futuristic-button {
             padding: 06px 08px;
             font-size: 14px;
@@ -53,26 +53,26 @@
             color: #ffffff;
             transition: all 0.3s ease;
         }
-        
+
         .futuristic-button:hover {
             background-color: #ffffff;
             color: #0088ff;
             border-color: #4c94be;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         .search-container {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
-        
+
         .search-label {
             font-size: 18px;
             color: #fff714;
             margin-right: 10px;
         }
-        
+
         .search-input {
             padding: 8px;
             font-size: 16px;
@@ -98,7 +98,7 @@
             align-items: center;
             height: 100vh;
         }
-        
+
         .center-container img {
             display: block;
             margin: 0 auto;
@@ -366,58 +366,58 @@
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 74 : 
+            case 74 :
                 var site = 'inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 75 : 
+            case 75 :
                 var site = 'inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 76 : 
+            case 76 :
                 var site = 'inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 77 : 
+            case 77 :
                 var site = 'inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain=  | inurl:page= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 78 : 
+            case 78 :
                 var site = 'inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 79 : 
+            case 79 :
                 var site = 'inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read=  | inurl:ping= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 80 : 
+            case 80 :
                 searchQuery += ' ”choose file”'
                 break
-            case 81 : 
+            case 81 :
                 var site = 'inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 82 : 
+            case 82 :
                 var site = 'inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 83 : 
+            case 83 :
                 var site = 'inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& ' + searchQuery;
                 var url = 'https://www.google.com/search?q=' + encodeURIComponent(site);
                 window.open(url, '_blank');
                 break
-            case 84 : 
+            case 84 :
                 searchQuery += ' -www -shop -share -ir -mfa'
                 break
-            case 85 : 
+            case 85 :
                 searchQuery += ' inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3'
                 break
             default:
@@ -473,7 +473,7 @@
     <button class="futuristic-button" onclick="googleSearch(81)">API Docs</button>
     <button class="futuristic-button" onclick="googleSearch(82)">Test Environments</button>
     <button class="futuristic-button" onclick="googleSearch(83)">Sensitive Parameters</button>
-    <button class="futuristic-button" onclick="googleSearch(31)">Search OpenBugBounty</button> 
+    <button class="futuristic-button" onclick="googleSearch(31)">Search OpenBugBounty</button>
     <br>
     <br>
     <button class="futuristic-button" onclick="googleSearch(62)">Sensitive File #1</button>
@@ -534,22 +534,16 @@
 <br>
 <h4 style="text-align: center; color: #ffffff; margin-top: 15px;">Follow us on social media</h4>
 <div class="container text-center">
-    <a href="https://www.youtube.com/@0xPoyel" target="_blank" class="me-3">
-      <i class="fab fa-youtube fa-2x"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/zabed-ullah-poyel/" target="_blank" class="me-3">
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-    <a href="https://github.com/0xPoyel" target="_blank" class="me-3">
+    <a href="https://github.com/dineshpathro90/" target="_blank" class="me-3">
       <i class="fab fa-github fa-2x"></i>
     </a>
-    <a href="https://medium.com/@zabedullahpoyel" target="_blank" class="me-3">
+    <a href="https://medium.com/@dineshpathro9" target="_blank" class="me-3">
       <i class="fab fa-medium fa-2x"></i>
     </a>
-    <a href="https://x.com/zabedullahpoyel" target="_blank" class="me-3">
-        <i class="fab fa-twitter fa-2x"></i>
-      </a>
-  </div>  
+    <a href="https://x.com/DineshPathro/" target="_blank" class="me-3">
+      <i class="fab fa-twitter fa-2x"></i>
+    </a>
+  </div>
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
